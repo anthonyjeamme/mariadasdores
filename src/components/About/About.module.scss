@@ -1,0 +1,42 @@
+.About {
+  padding: 8rem 2rem;
+  background: var(--color-bg-light);
+}
+
+.Container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.Title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  color: var(--color-text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.Line {
+  width: 50px;
+  height: 1px;
+  background: var(--color-gold);
+  margin-bottom: 3rem;
+}
+
+.Text {
+  p {
+    font-size: 1.0625rem;
+    line-height: 1.9;
+    color: #4a4540;
+    margin-bottom: 1.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .About {
+    padding: 5rem 1.5rem;
+  }
+}

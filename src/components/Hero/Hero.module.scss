@@ -1,0 +1,119 @@
+.Hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+.Background {
+  position: absolute;
+  inset: 0;
+
+  img {
+    opacity: 0.35;
+  }
+}
+
+.Overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.1) 40%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+.Content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--color-text-light);
+  padding: 0 2rem;
+}
+
+.Eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.Name {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 2rem;
+}
+
+.Divider {
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0 auto;
+}
+
+.ScrollDown {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-text-light);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  span {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+}
+
+.ScrollLine {
+  width: 1px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-gold);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    top: -100%;
+  }
+  50% {
+    top: 0;
+  }
+  100% {
+    top: 100%;
+  }
+}

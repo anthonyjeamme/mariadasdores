@@ -1,0 +1,65 @@
+.Contact {
+  padding: 8rem 2rem;
+  background: var(--color-bg-dark);
+}
+
+.Container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.Title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+}
+
+.Line {
+  width: 50px;
+  height: 1px;
+  background: var(--color-gold);
+  margin-bottom: 3.5rem;
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.Item {
+  h3 {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 1rem;
+  }
+
+  a,
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+
+  a:hover {
+    opacity: 1;
+    color: var(--color-gold);
+  }
+}
+
+@media (max-width: 768px) {
+  .Contact {
+    padding: 5rem 1.5rem;
+  }
+
+  .Grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}

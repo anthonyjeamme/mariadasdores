@@ -1,0 +1,258 @@
+.Gallery {
+  padding: 8rem 2rem;
+  background: var(--color-bg-dark);
+}
+
+.Container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.SectionTitle {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 400;
+  color: var(--color-text-light);
+  margin-bottom: 1.5rem;
+}
+
+.Line {
+  width: 50px;
+  height: 1px;
+  background: var(--color-gold);
+  margin-bottom: 2.5rem;
+}
+
+.Filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.FilterBtn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-text-light);
+  padding: 0.6rem 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+
+  &.active {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: #111;
+  }
+}
+
+.Grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.Card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: #1a1a1a;
+  display: block;
+  text-align: left;
+
+  &:hover {
+    .CardImage img {
+      transform: scale(1.05);
+    }
+
+    .CardOverlay {
+      opacity: 1;
+    }
+  }
+}
+
+.CardImage {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+
+  img {
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+}
+
+.CardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0) 50%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.CardTitle {
+  color: white;
+  font-size: 1.125rem;
+  margin-bottom: 0.35rem;
+}
+
+.CardTechnique {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+// Lightbox
+
+.Lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.LightboxClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 210;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.LightboxContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 100%;
+}
+
+.LightboxImage {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  flex-shrink: 0;
+}
+
+.LightboxInfo {
+  text-align: center;
+  color: var(--color-text-light);
+  padding: 1.5rem 0;
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: var(--color-gray);
+    line-height: 1.6;
+
+    &:first-of-type {
+      font-style: italic;
+    }
+  }
+}
+
+.LightboxNav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 210;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 1rem;
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.direction-prev {
+    left: 1rem;
+  }
+
+  &.direction-next {
+    right: 1rem;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .Grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .Gallery {
+    padding: 5rem 1.5rem;
+  }
+
+  .LightboxImage {
+    height: 50vh;
+  }
+
+  .LightboxNav {
+    &.direction-prev {
+      left: 0.25rem;
+    }
+    &.direction-next {
+      right: 0.25rem;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .CardOverlay {
+    opacity: 1;
+  }
+}
