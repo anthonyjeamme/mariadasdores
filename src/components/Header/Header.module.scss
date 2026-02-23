@@ -3,14 +3,16 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  z-index: 200;
+  transition: background 0.4s ease;
   background: transparent;
 
   &.scrolled {
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+    background: rgba(10, 10, 10, 0.98);
+  }
+
+  &.menuOpen {
+    background: transparent;
   }
 }
 
@@ -35,7 +37,7 @@
   }
 }
 
-.Nav {
+.DesktopNav {
   display: flex;
   gap: 2.5rem;
 
@@ -53,6 +55,10 @@
       color: var(--color-gold);
     }
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .Burger {
@@ -63,7 +69,6 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  z-index: 110;
 
   span {
     display: block;
@@ -84,24 +89,23 @@
       transform: rotate(-45deg) translate(4px, -5px);
     }
   }
-}
 
-@media (max-width: 768px) {
-  .Burger {
+  @media (max-width: 768px) {
     display: flex;
   }
+}
 
-  .Nav {
+.MobileNav {
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
+    z-index: 150;
     background: rgba(10, 10, 10, 0.98);
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s ease;
@@ -111,10 +115,26 @@
       pointer-events: all;
     }
 
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
     a {
+      color: var(--color-text-light);
+      text-decoration: none;
       font-size: 1.25rem;
       letter-spacing: 0.15em;
+      text-transform: uppercase;
       opacity: 0.9;
+      transition: opacity 0.3s ease, color 0.3s ease;
+
+      &:hover {
+        opacity: 1;
+        color: var(--color-gold);
+      }
     }
   }
 }
